@@ -1,0 +1,19 @@
+<div class="d-flex flex-column align-items-center">
+  <div
+    class="card col-8 mt-2 transaction"
+    *ngFor="let transaction of transactions"
+    (click)="open(transaction.id)"
+  >
+    <div class="card-body d-flex justify-content-between">
+      <span class="text-dark">
+        {{ transaction.description }}
+      </span>
+      <span class="text-danger" *ngIf="transaction.type === 'Spending'">
+        {{ transaction.amount | currency }}
+      </span>
+      <span class="text-info" *ngIf="transaction.type === 'Incoming'">
+        {{ transaction.amount | currency }}
+      </span>
+    </div>
+  </div>
+</div>
